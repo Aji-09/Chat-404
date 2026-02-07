@@ -1,0 +1,76 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    border: none;
+}
+
+
+body {
+    font-family: Verdana;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: hsla(0, 0%, 10%, 1);
+    color: hsl(0, 0%, 95%);
+    
+}
+
+#header {
+        padding: 15px 15px;
+        border-bottom : 2px solid hsla(30, 100%, 60%, 1);
+        box-shadow: 5px 0 10px hsla(30, 100%, 60%, 0.5);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+}
+form {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    background-color: hsla(0, 0%, 20%, 1);
+    height: max(10vh, 80px);
+    padding: 1rem;
+    gap: 1ch
+}
+
+input {
+    flex-grow: 1;
+    border-radius: 0.75rem;
+    box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.5);
+    background-color: hsla(0, 0%, 95%, 1);
+    padding: 0 1ch;
+
+}
+input:focus {
+    outline: solid 2px hsl(0, 0%, 15%);
+}
+button {
+    border-radius:  0.75rem;
+    padding: 0 0.75rem;
+    background-color: hsla(30, 100%, 55%, 1);
+    color: hsl(0, 0%, 95%);
+    font-weight: 550;
+    box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.5);
+    width: 100px;
+    cursor: pointer;
+}
+
+#status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1ch;
+    margin-right: 10px;
+   
+}
+.online-status {
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    border-radius: 50%;
+    
+}
+
+.is-online-status {
+    background-color: lightgreen;
+}

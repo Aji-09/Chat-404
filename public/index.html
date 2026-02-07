@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="header"><span
+            style="font-family: Verdana, Geneva, Tahoma, sans-serif ;color: hsla(30, 100%, 60%, 1);; font-size: clamp(1rem, 1.5rem, 2rem); font-weight: 700;">Chat
+            404</span>
+            <div id="status">
+
+                <span style=" font-family: Arial, Helvetica, sans-serif;">Status</span>
+                <span class="online-status"></span>
+            </div>
+
+        </div>
+    <ul id="messages"></ul>
+    <form id="chat-form">
+        <input id="msg" type="text" autocomplete="off">
+        <button id="send" type="submit">Send</button>
+    </form>
+    <script src="/socket.io/socket.io.js"></script>
+       
+    <script>
+    const socket = io()
+
+    socket.on('connect', (socket)=>{
+        const status = document.querySelector(".online-status")
+        status.classList.add("is-online-status")
+    })
+
+    socket.on('disconnect', (socket)=>{
+        const status = document.querySelector(".online-status")
+        status.classList.remove("is-online-status")
+    })
+    socket.on("message", (msg)=>{
+        console.log(msg)
+        const messages = document.querySelector("#messages")
+        const newMessage = document.createElement("li")
+
+        newMessage.textContent = msg
+        messages.appendChild(newMessage)
+    })
+
+    
+
+    document.querySelector("#chat-form").addEventListener("submit", (e) => {
+            e.preventDefault()
+
+            const msg = document.querySelector("#msg")
+
+            socket.send(msg.value)
+            msg.value = ""
+        })</script>
+</body>
+
+</html>
