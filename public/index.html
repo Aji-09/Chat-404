@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Chat</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -26,37 +27,7 @@
     </form>
     <script src="/socket.io/socket.io.js"></script>
        
-    <script>
-    const socket = io()
-
-    socket.on('connect', (socket)=>{
-        const status = document.querySelector(".online-status")
-        status.classList.add("is-online-status")
-    })
-
-    socket.on('disconnect', (socket)=>{
-        const status = document.querySelector(".online-status")
-        status.classList.remove("is-online-status")
-    })
-    socket.on("message", (msg)=>{
-        console.log(msg)
-        const messages = document.querySelector("#messages")
-        const newMessage = document.createElement("li")
-
-        newMessage.textContent = msg
-        messages.appendChild(newMessage)
-    })
-
     
-
-    document.querySelector("#chat-form").addEventListener("submit", (e) => {
-            e.preventDefault()
-
-            const msg = document.querySelector("#msg")
-
-            socket.send(msg.value)
-            msg.value = ""
-        })</script>
 </body>
 
 </html>

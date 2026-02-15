@@ -9,8 +9,7 @@ const io = new Server(httpServer)
 
 io.on("connection", (socket)=>{
     socket.on("message", (msg)=> {
-        socket.send(msg)
-        console.log(msg)
+        io.emit("message", {message: msg, id: socket.id})
     })
 })
 
